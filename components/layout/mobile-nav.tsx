@@ -54,7 +54,7 @@ export function MobileNav() {
         <div className="mt-auto flex flex-col gap-4 border-t border-border pt-6">
           <div className="flex items-center justify-between gap-3">
             <span className="text-sm text-muted-fg">{t("language")}</span>
-            <LocaleSwitcher />
+            <LocaleSwitcher variant="inline" />
           </div>
           <div className="flex items-center justify-between gap-3">
             <span className="text-sm text-muted-fg">{t("toggleTheme")}</span>
