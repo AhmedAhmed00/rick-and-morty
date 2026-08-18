@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "Home",
+    "characters": "Characters",
+    "episodes": "Episodes",
+    "locations": "Locations",
+    "skipToContent": "Skip to content",
+    "toggleTheme": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "language": "Language",
+    "menu": "Menu",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "titleLead": "Know everything in",
+    "titleHighlight": "one place.",
+    "subtitle": "Characters, locations, episodes and much more.",
+    "tagline": "Wubba Lubba Dub Dub! Watch your eyes.",
+    "imageAlt": "Rick holding Morty's eyes open",
+    "seeAll": "See all"
+  },
+  "search": {
+    "placeholder": "Character, episode, location…",
+    "label": "Search the multiverse",
+    "filterBy": "Filter by:",
+    "submit": "Search",
+    "clear": "Clear search"
+  },
+  "filters": {
+    "status": "Status",
+    "species": "Species",
+    "gender": "Gender",
+    "any": "Any",
+    "clearAll": "Clear all",
+    "remove": "Remove {label} filter"
+  },
+  "status": {
+    "Alive": "Alive",
+    "Dead": "Dead",
+    "unknown": "Unknown"
+  },
+  "gender": {
+    "Female": "Female",
+    "Male": "Male",
+    "Genderless": "Genderless",
+    "unknown": "Unknown"
+  },
+  "species": {
+    "Human": "Human",
+    "Alien": "Alien",
+    "Humanoid": "Humanoid",
+    "Animal": "Animal",
+    "Robot": "Robot",
+    "Mythological Creature": "Mythological Creature",
+    "Cronenberg": "Cronenberg",
+    "Disease": "Disease",
+    "Poopybutthole": "Poopybutthole",
+    "unknown": "Unknown"
+  },
+  "character": {
+    "title": "Characters",
+    "learnMore": "Learn more",
+    "episodeCount": "{count, plural, =0 {No episodes} one {Appears in # episode} other {Appears in # episodes}}",
+    "origin": "Origin",
+    "location": "Last known location",
+    "more": "More characters",
+    "count": "{count, plural, =0 {No characters} one {# character} other {# characters}}",
+    "notFound": "Character not found",
+    "notFoundBody": "There is no character with that id in this dimension."
+  },
+  "episode": {
+    "title": "Episodes",
+    "more": "More episodes",
+    "airDate": "Air date",
+    "characterCount": "{count, plural, =0 {No characters appear in this episode} one {# character appears in this episode} other {# characters appear in this episode}}",
+    "count": "{count, plural, =0 {No episodes} one {# episode} other {# episodes}}",
+    "notFound": "Episode not found",
+    "notFoundBody": "There is no episode with that id."
+  },
+  "location": {
+    "title": "Locations",
+    "more": "More locations",
+    "type": "Type",
+    "dimension": "Dimension",
+    "residents": "Residents",
+    "residentCount": "{count, plural, =0 {No known residents} one {# resident} other {# residents}}",
+    "count": "{count, plural, =0 {No locations} one {# location} other {# locations}}",
+    "notFound": "Location not found",
+    "notFoundBody": "There is no location with that id."
+  },
+  "pagination": {
+    "label": "Pagination",
+    "previous": "Previous page",
+    "next": "Next page",
+    "page": "Page {page}",
+    "current": "Page {page}, current page",
+    "summary": "Page {page} of {pages}"
+  },
+  "state": {
+    "loading": "Loading",
+    "emptyTitle": "Nothing found",
+    "emptyBody": "No results match these filters. Try adjusting or clearing them.",
+    "errorTitle": "Something went wrong",
+    "errorBody": "We couldn't reach the multiverse. Check your connection and try again.",
+    "retry": "Try again",
+    "backHome": "Back to home"
+  },
+  "footer": {
+    "backToTop": "Back to top"
+  },
+  "meta": {
+    "homeTitle": "Multiverse Explorer",
+    "homeDescription": "Explore every character, episode and location from the Rick and Morty universe.",
+    "charactersDescription": "Browse, search and filter all 826 characters from the multiverse.",
+    "episodesDescription": "Every episode across all seasons.",
+    "locationsDescription": "Every known location and dimension."
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "nav": {
+    "home": "الرئيسية",
+    "characters": "الشخصيات",
+    "episodes": "الحلقات",
+    "locations": "الأماكن",
+    "skipToContent": "تخطَّ إلى المحتوى",
+    "toggleTheme": "تبديل المظهر",
+    "light": "فاتح",
+    "dark": "داكن",
+    "language": "اللغة",
+    "menu": "القائمة",
+    "openMenu": "فتح القائمة",
+    "closeMenu": "إغلاق القائمة"
+  },
+  "home": {
+    "titleLead": "اعرف كل شيء في",
+    "titleHighlight": "مكان واحد.",
+    "subtitle": "الشخصيات والأماكن والحلقات وأكثر من ذلك بكثير.",
+    "tagline": "!ووبا لوبا داب داب انتبه لعينيك",
+    "imageAlt": "ريك يفتح عيني مورتي",
+    "seeAll": "عرض الكل"
+  },
+  "search": {
+    "placeholder": "شخصية، حلقة، مكان…",
+    "label": "ابحث في الكون المتعدد",
+    "filterBy": "تصفية حسب:",
+    "submit": "بحث",
+    "clear": "مسح البحث"
+  },
+  "filters": {
+    "status": "الحالة",
+    "species": "الفصيلة",
+    "gender": "النوع",
+    "any": "الكل",
+    "clearAll": "مسح الكل",
+    "remove": "إزالة عامل التصفية {label}"
+  },
+  "status": {
+    "Alive": "حي",
+    "Dead": "متوفى",
+    "unknown": "غير معروف"
+  },
+  "gender": {
+    "Female": "أنثى",
+    "Male": "ذكر",
+    "Genderless": "بلا نوع",
+    "unknown": "غير معروف"
+  },
+  "species": {
+    "Human": "بشري",
+    "Alien": "فضائي",
+    "Humanoid": "شبيه بالبشر",
+    "Animal": "حيوان",
+    "Robot": "آلي",
+    "Mythological Creature": "كائن أسطوري",
+    "Cronenberg": "كروننبرغ",
+    "Disease": "مرض",
+    "Poopybutthole": "بوبي بت هول",
+    "unknown": "غير معروف"
+  },
+  "character": {
+    "title": "الشخصيات",
+    "learnMore": "اعرف المزيد",
+    "episodeCount": "{count, plural, =0 {لا توجد حلقات} one {يظهر في حلقة واحدة} two {يظهر في حلقتين} few {يظهر في # حلقات} many {يظهر في # حلقة} other {يظهر في # حلقة}}",
+    "origin": "الأصل",
+    "location": "آخر موقع معروف",
+    "more": "شخصيات أخرى",
+    "count": "{count, plural, =0 {لا توجد شخصيات} one {شخصية واحدة} two {شخصيتان} few {# شخصيات} many {# شخصية} other {# شخصية}}",
+    "notFound": "الشخصية غير موجودة",
+    "notFoundBody": "لا توجد شخصية بهذا المعرف في هذا البُعد."
+  },
+  "episode": {
+    "title": "الحلقات",
+    "more": "حلقات أخرى",
+    "airDate": "تاريخ العرض",
+    "characterCount": "{count, plural, =0 {لا توجد شخصيات في هذه الحلقة} one {شخصية واحدة تظهر في هذه الحلقة} two {شخصيتان تظهران في هذه الحلقة} few {# شخصيات تظهر في هذه الحلقة} many {# شخصية تظهر في هذه الحلقة} other {# شخصية تظهر في هذه الحلقة}}",
+    "count": "{count, plural, =0 {لا توجد حلقات} one {حلقة واحدة} two {حلقتان} few {# حلقات} many {# حلقة} other {# حلقة}}",
+    "notFound": "الحلقة غير موجودة",
+    "notFoundBody": "لا توجد حلقة بهذا المعرف."
+  },
+  "location": {
+    "title": "الأماكن",
+    "more": "أماكن أخرى",
+    "type": "النوع",
+    "dimension": "البُعد",
+    "residents": "السكان",
+    "residentCount": "{count, plural, =0 {لا يوجد سكان معروفون} one {ساكن واحد} two {ساكنان} few {# سكان} many {# ساكنًا} other {# ساكن}}",
+    "count": "{count, plural, =0 {لا توجد أماكن} one {مكان واحد} two {مكانان} few {# أماكن} many {# مكانًا} other {# مكان}}",
+    "notFound": "المكان غير موجود",
+    "notFoundBody": "لا يوجد مكان بهذا المعرف."
+  },
+  "pagination": {
+    "label": "ترقيم الصفحات",
+    "previous": "الصفحة السابقة",
+    "next": "الصفحة التالية",
+    "page": "صفحة {page}",
+    "current": "صفحة {page}، الصفحة الحالية",
+    "summary": "صفحة {page} من {pages}"
+  },
+  "state": {
+    "loading": "جارٍ التحميل",
+    "emptyTitle": "لا توجد نتائج",
+    "emptyBody": "لا توجد نتائج مطابقة لعوامل التصفية. حاول تعديلها أو مسحها.",
+    "errorTitle": "حدث خطأ ما",
+    "errorBody": "تعذّر الوصول إلى الكون المتعدد. تحقق من اتصالك وحاول مجددًا.",
+    "retry": "حاول مجددًا",
+    "backHome": "العودة إلى الرئيسية"
+  },
+  "footer": {
+    "backToTop": "العودة إلى الأعلى"
+  },
+  "meta": {
+    "homeTitle": "مستكشف الكون المتعدد",
+    "homeDescription": "استكشف كل شخصية وحلقة ومكان من عالم ريك ومورتي.",
+    "charactersDescription": "تصفح وابحث وصفِّ جميع الشخصيات البالغ عددها 826 شخصية.",
+    "episodesDescription": "كل الحلقات عبر جميع المواسم.",
+    "locationsDescription": "كل الأماكن والأبعاد المعروفة."
+  }
+}
