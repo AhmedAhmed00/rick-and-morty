@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildRange } from "@/lib/pagination";
+import { buildRange } from "@/utils/pagination";
 
 describe("buildRange", () => {
   it("renders nothing when there is a single page or none", () => {

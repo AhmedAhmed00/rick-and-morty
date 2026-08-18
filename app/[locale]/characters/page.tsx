@@ -5,10 +5,10 @@ import { Suspense } from "react";
 import { CharacterBrowser } from "@/components/character/character-browser";
 import { CharacterGridSkeleton } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
-import { charactersQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { localeAlternates } from "@/lib/site";
-import { loadCharacterParams, toCharacterFilters } from "@/lib/search-params";
+import { charactersQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { localeAlternates } from "@/utils/site";
+import { loadCharacterParams, toCharacterFilters } from "@/utils/search-params";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/characters">,

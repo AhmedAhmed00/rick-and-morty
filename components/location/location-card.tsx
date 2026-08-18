@@ -2,7 +2,7 @@ import { Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Location } from "@/lib/types";
+import type { Location } from "@/types";
 
 // Capped at 5 columns: a page holds 20 items, so every row fills exactly.
 const GRID =

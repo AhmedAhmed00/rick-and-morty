@@ -2,7 +2,7 @@
 
 import { LocationGrid, LocationGridSkeleton } from "./location-card";
 import { PagedSection } from "@/components/ui/paged-section";
-import { locationsQuery } from "@/lib/queries";
+import { locationsQuery } from "@/services/queries";
 
 export function LocationsSection() {
   return (

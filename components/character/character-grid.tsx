@@ -1,6 +1,6 @@
 import { CharacterCard } from "./character-card";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Character } from "@/lib/types";
+import type { Character } from "@/types";
 
 const GRID =
   "grid gap-grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5";

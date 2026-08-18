@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
-import type { CharacterDetail } from "@/lib/types";
+import type { CharacterDetail } from "@/types";
 
 function Fact({ icon, children }: { icon: ReactNode; children: ReactNode }) {
   return (

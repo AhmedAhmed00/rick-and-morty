@@ -1,5 +1,5 @@
 import { QueryClient, environmentManager } from "@tanstack/react-query";
-import { ApiError } from "./api";
+import { ApiError } from "@/services/api";
 
 function makeQueryClient() {
   return new QueryClient({

@@ -5,10 +5,10 @@ import { Suspense } from "react";
 import { Container } from "@/components/layout/container";
 import { LocationGridSkeleton } from "@/components/location/location-card";
 import { LocationsSection } from "@/components/location/locations-section";
-import { locationsQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { localeAlternates } from "@/lib/site";
-import { readPage } from "@/lib/search-params";
+import { locationsQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { localeAlternates } from "@/utils/site";
+import { readPage } from "@/utils/search-params";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/locations">,

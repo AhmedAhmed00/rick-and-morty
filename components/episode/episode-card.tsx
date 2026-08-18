@@ -2,7 +2,7 @@ import { MonitorPlay } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
-import type { Episode } from "@/lib/types";
+import type { Episode } from "@/types";
 
 const GRID =
   "grid gap-grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5";

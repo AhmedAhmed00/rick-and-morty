@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import { describe, expect, it } from "vitest";
 import { StatusBadge } from "@/components/ui/status-badge";
-import messages from "@/messages/en.json";
-import { STATUSES, type Status } from "@/lib/types";
+import messages from "@/i18n/messages/en.json";
+import { STATUSES, type Status } from "@/types";
 
 function renderBadge(status: Status) {
   return render(

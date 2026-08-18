@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { loadCharacterParams, toCharacterFilters } from "@/lib/search-params";
+import { loadCharacterParams, toCharacterFilters } from "@/utils/search-params";
 
 /** Parses a query string the way the server page does, then narrows it. */
 function filtersFor(query: string) {

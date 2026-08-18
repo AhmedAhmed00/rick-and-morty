@@ -1,7 +1,7 @@
 import { HttpResponse, graphql } from "msw";
 import { describe, expect, it } from "vitest";
-import { ApiError } from "@/lib/api";
-import { getCharacter, getEpisode } from "@/lib/graphql";
+import { ApiError } from "@/services/api";
+import { getCharacter, getEpisode } from "@/services/graphql";
 import { server } from "./msw/server";
 
 const gql = graphql.link("https://rickandmortyapi.com/graphql");

@@ -8,11 +8,11 @@ import { CharactersSection } from "@/components/character/characters-section";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { EpisodeList } from "@/components/episode/episode-list";
-import { getCharacter } from "@/lib/graphql";
-import { characterQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { parseId } from "@/lib/parse-id";
-import { localeAlternates, ogLocale } from "@/lib/site";
+import { getCharacter } from "@/services/graphql";
+import { characterQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { parseId } from "@/utils/parse-id";
+import { localeAlternates, ogLocale } from "@/utils/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/character/[id]">,

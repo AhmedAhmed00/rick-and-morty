@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { getCharacters, getLocation } from "@/lib/api";
+import { getCharacters, getLocation } from "@/services/api";
 
 describe("getCharacters", () => {
   it("maps the API shape onto the domain type", async () => {

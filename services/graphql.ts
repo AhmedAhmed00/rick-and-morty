@@ -1,8 +1,8 @@
 import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client";
 import type { TypedDocumentNode } from "@apollo/client";
-import { ApiError } from "./api";
-import type { CharacterDetail, EpisodeDetail, Gender, Status } from "./types";
-import { GENDERS, STATUSES } from "./types";
+import { ApiError } from "@/services/api";
+import type { CharacterDetail, EpisodeDetail, Gender, Status } from "@/types";
+import { GENDERS, STATUSES } from "@/types";
 
 /*
  * GraphQL for the two detail pages: REST needs two round trips there (record,

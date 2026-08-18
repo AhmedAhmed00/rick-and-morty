@@ -9,9 +9,9 @@ import { FilterBar, type FilterConfig } from "@/components/ui/filter-bar";
 import { Pagination } from "@/components/ui/pagination";
 import { EmptyState, ErrorState } from "@/components/ui/states";
 import { usePageHref } from "@/hooks/use-page-href";
-import { charactersQuery } from "@/lib/queries";
-import { characterParams, toCharacterFilters } from "@/lib/search-params";
-import { GENDERS, SPECIES, STATUSES } from "@/lib/types";
+import { charactersQuery } from "@/services/queries";
+import { characterParams, toCharacterFilters } from "@/utils/search-params";
+import { GENDERS, SPECIES, STATUSES } from "@/types";
 
 export function CharacterBrowser() {
   const t = useTranslations("character");

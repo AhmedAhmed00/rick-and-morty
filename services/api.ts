@@ -7,8 +7,8 @@ import type {
   Location,
   Page,
   Status,
-} from "./types";
-import { GENDERS, STATUSES } from "./types";
+} from "@/types";
+import { GENDERS, STATUSES } from "@/types";
 
 // Written out in full so the Next compiler can inline it into the client bundle;
 // a destructured or computed lookup would resolve to undefined in the browser.
@@ -62,10 +62,7 @@ interface RestLocation {
   residents: string[];
 }
 
-/**
- * Returns `null` on 404 and lets the caller decide what it means: the API uses
- * the same 404 for "no results", "page out of range" and "doesn't exist".
- */
+
 async function get<T>(
   path: string,
   params: Record<string, unknown> = {},
@@ -168,7 +165,6 @@ export async function getLocations(
   return toPage(data, filters.page, toLocation);
 }
 
-/** Location detail stays on REST; only character and episode pages use GraphQL. */
 export async function getLocation(id: number, signal?: AbortSignal) {
   const raw = await get<RestLocation>(`/location/${id}`, {}, signal);
   if (!raw) return null;

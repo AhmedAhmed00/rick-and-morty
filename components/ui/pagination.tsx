@@ -5,7 +5,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { MouseEvent } from "react";
 import { Link } from "@/i18n/navigation";
-import { buildRange } from "@/lib/pagination";
+import { buildRange } from "@/utils/pagination";
 
 /** True for a plain left click, i.e. one the app should handle itself. */
 function isPlainClick(event: MouseEvent) {

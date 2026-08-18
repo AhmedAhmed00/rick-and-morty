@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Link } from "@/i18n/navigation";
-import type { Character } from "@/lib/types";
+import type { Character } from "@/types";
 
 interface Props {
   character: Character;

@@ -48,9 +48,11 @@ runs without a `.env.local`.
 ```
 app/[locale]/     Routes — parse params, prefetch, render.
 components/       UI primitives, layout, one folder per entity.
-lib/              Types, data access, query definitions, URL parsers.
+services/         Data access: REST, GraphQL, and the TanStack Query definitions.
+types/            Shared domain and API response types.
+utils/            Pure helpers — URL parsers, pagination, id parsing, metadata.
 hooks/            Client-side state helpers.
-i18n/ messages/   Localisation setup and translations.
+i18n/             Locale routing, request config, and the translation catalogues.
 test/             Vitest specs and MSW handlers.
 ```
 

@@ -7,7 +7,7 @@ import type { ReactNode } from "react";
 import { Pagination } from "./pagination";
 import { EmptyState, ErrorState } from "./states";
 import { usePageHref, usePageParam } from "@/hooks/use-page-href";
-import type { Page } from "@/lib/types";
+import type { Page } from "@/types";
 
 // K is a parameter because queryFn is contravariant in the key type.
 interface Props<T, K extends QueryKey> {

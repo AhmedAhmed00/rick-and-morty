@@ -8,8 +8,8 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { EpisodeGrid } from "@/components/episode/episode-card";
 import { LocationGrid } from "@/components/location/location-card";
 import { GlobalSearch } from "@/components/search/global-search";
-import { getCharacters, getEpisodes, getLocations } from "@/lib/api";
-import { localeAlternates } from "@/lib/site";
+import { getCharacters, getEpisodes, getLocations } from "@/services/api";
+import { localeAlternates } from "@/utils/site";
 import highlight from "@/public/HighLightImage.png";
 
 // Two full rows in the widest grid.

@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { locales, routing } from "@/i18n/routing";
-import { getCharacters, getEpisodes, getLocations } from "@/lib/api";
-import { siteUrl } from "@/lib/site";
+import { getCharacters, getEpisodes, getLocations } from "@/services/api";
+import { siteUrl } from "@/utils/site";
 
 export const revalidate = 86400;
 

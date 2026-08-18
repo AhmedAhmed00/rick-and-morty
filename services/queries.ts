@@ -1,7 +1,7 @@
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
-import { getCharacters, getEpisodes, getLocation, getLocations } from "./api";
-import { getCharacter, getEpisode } from "./graphql";
-import type { CharacterFilters, ListFilters } from "./types";
+import { getCharacters, getEpisodes, getLocation, getLocations } from "@/services/api";
+import { getCharacter, getEpisode } from "@/services/graphql";
+import type { CharacterFilters, ListFilters } from "@/types";
 
 // Declared once and used by both sides: the server prefetches, the client
 // subscribes to the same object, so the keys can't drift.

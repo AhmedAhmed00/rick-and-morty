@@ -7,11 +7,11 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { LocationsSection } from "@/components/location/locations-section";
-import { getLocation } from "@/lib/api";
-import { locationQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { parseId } from "@/lib/parse-id";
-import { localeAlternates } from "@/lib/site";
+import { getLocation } from "@/services/api";
+import { locationQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { parseId } from "@/utils/parse-id";
+import { localeAlternates } from "@/utils/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/location/[id]">,

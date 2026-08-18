@@ -7,11 +7,11 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { EpisodesSection } from "@/components/episode/episodes-section";
-import { getEpisode } from "@/lib/graphql";
-import { episodeQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { parseId } from "@/lib/parse-id";
-import { localeAlternates } from "@/lib/site";
+import { getEpisode } from "@/services/graphql";
+import { episodeQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { parseId } from "@/utils/parse-id";
+import { localeAlternates } from "@/utils/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/episode/[id]">,

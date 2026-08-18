@@ -2,7 +2,7 @@
 
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
-import type { Status } from "@/lib/types";
+import type { Status } from "@/types";
 
 /**
  * The single place a character status maps to a colour. Class strings are

@@ -13,7 +13,7 @@ import { BackToTop } from "@/components/layout/back-to-top";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { isRtl, locales, routing } from "@/i18n/routing";
-import { ogLocale, siteUrl } from "@/lib/site";
+import { ogLocale, siteUrl } from "@/utils/site";
 import { Providers } from "../providers";
 import "../globals.css";
 

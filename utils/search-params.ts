@@ -4,8 +4,8 @@ import {
   parseAsString,
   parseAsStringLiteral,
 } from "nuqs/server";
-import type { CharacterFilters } from "./types";
-import { GENDERS, SPECIES, STATUSES } from "./types";
+import type { CharacterFilters } from "@/types";
+import { GENDERS, SPECIES, STATUSES } from "@/types";
 
 /**
  * URL contract for the character list, shared by the server page and the client.

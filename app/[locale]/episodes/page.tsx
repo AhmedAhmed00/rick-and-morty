@@ -5,10 +5,10 @@ import { Suspense } from "react";
 import { Container } from "@/components/layout/container";
 import { EpisodeGridSkeleton } from "@/components/episode/episode-card";
 import { EpisodesSection } from "@/components/episode/episodes-section";
-import { episodesQuery } from "@/lib/queries";
-import { getQueryClient } from "@/lib/query-client";
-import { localeAlternates } from "@/lib/site";
-import { readPage } from "@/lib/search-params";
+import { episodesQuery } from "@/services/queries";
+import { getQueryClient } from "@/services/query-client";
+import { localeAlternates } from "@/utils/site";
+import { readPage } from "@/utils/search-params";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/episodes">,

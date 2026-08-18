@@ -3,7 +3,7 @@
 import { CalendarDays } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
-import type { Episode } from "@/lib/types";
+import type { Episode } from "@/types";
 
 /** Compact episode rows, used on the character detail page. */
 export function EpisodeList({ episodes }: { episodes: Episode[] }) {

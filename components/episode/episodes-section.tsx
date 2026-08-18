@@ -2,7 +2,7 @@
 
 import { EpisodeGrid, EpisodeGridSkeleton } from "./episode-card";
 import { PagedSection } from "@/components/ui/paged-section";
-import { episodesQuery } from "@/lib/queries";
+import { episodesQuery } from "@/services/queries";
 
 export function EpisodesSection() {
   return (
