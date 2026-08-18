@@ -3,7 +3,7 @@
 A responsive explorer for the Rick and Morty universe — browse, search and filter characters,
 episodes and locations, in English and Arabic, with light and dark themes.
 
-**Live demo:** <https://rick-and-morty-blue-eight.vercel.app/en>
+**Live demo:** <https://rick-and-morty-tempo.vercel.app/en>
 
 Built with **Next.js 16 (App Router)**, **React 19**, **TanStack Query**, **Tailwind CSS v4**,
 **TypeScript**, **nuqs**, **next-intl** and **Apollo Client**.
