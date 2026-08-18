@@ -1,4 +1,5 @@
 import Image from "next/image";
+import type { Metadata } from "next";
 import { Globe, MonitorPlay, Users } from "lucide-react";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Container } from "@/components/layout/container";
@@ -8,10 +9,20 @@ import { EpisodeGrid } from "@/components/episode/episode-card";
 import { LocationGrid } from "@/components/location/location-card";
 import { GlobalSearch } from "@/components/search/global-search";
 import { getCharacters, getEpisodes, getLocations } from "@/lib/api";
+import { localeAlternates } from "@/lib/site";
 import highlight from "@/public/HighLightImage.png";
 
 // Two full rows in the widest grid.
 const PREVIEW_COUNT = 10;
+
+// Title and description come from the layout; this exists so the home page
+// declares its own canonical and hreflang pair rather than inheriting none.
+export async function generateMetadata(
+  props: PageProps<"/[locale]">,
+): Promise<Metadata> {
+  const { locale } = await props.params;
+  return { alternates: localeAlternates(locale) };
+}
 
 export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const { locale } = await params;

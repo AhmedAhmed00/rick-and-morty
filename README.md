@@ -93,6 +93,14 @@ Accessibility work covers semantic landmarks, a skip link, visible focus rings, 
 text as well as colour, keyboard support on the custom controls, and focus trapping in the mobile
 navigation.
 
+## SEO
+
+Every route builds its own title and description through `generateMetadata`, in the active locale.
+On top of that: Open Graph and Twitter cards so shared links preview with an image — character pages
+use the character's portrait, everything else falls back to a card generated from the brand tokens —
+plus canonical URLs, `hreflang` pairs linking `/en` and `/ar`, and a generated `robots.txt` and
+`sitemap.xml` covering all 1,007 pages.
+
 ## Testing
 
 `npm test` — 41 tests across 6 files with Vitest, React Testing Library and MSW. The mocks reproduce

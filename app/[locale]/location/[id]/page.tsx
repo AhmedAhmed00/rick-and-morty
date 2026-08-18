@@ -11,6 +11,7 @@ import { getLocation } from "@/lib/api";
 import { locationQuery } from "@/lib/queries";
 import { getQueryClient } from "@/lib/query-client";
 import { parseId } from "@/lib/parse-id";
+import { localeAlternates } from "@/lib/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/location/[id]">,
@@ -25,6 +26,7 @@ export async function generateMetadata(
   return {
     title: `${location.name} — ${location.dimension || t("dimension")}`,
     description: t("residentCount", { count: location.residents.length }),
+    alternates: localeAlternates(locale, `/location/${parsed}`),
   };
 }
 

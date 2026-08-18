@@ -13,6 +13,7 @@ import { BackToTop } from "@/components/layout/back-to-top";
 import { Footer } from "@/components/layout/footer";
 import { Navbar } from "@/components/layout/navbar";
 import { isRtl, locales, routing } from "@/i18n/routing";
+import { ogLocale, siteUrl } from "@/lib/site";
 import { Providers } from "../providers";
 import "../globals.css";
 
@@ -53,8 +54,26 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
+    // Every relative URL below — and in each page's alternates — resolves against this.
+    metadataBase: new URL(siteUrl),
     title: { default: t("homeTitle"), template: `%s · ${t("homeTitle")}` },
     description: t("homeDescription"),
+    // Inherited by every route, which is what puts a share image on pages that
+    // don't define one. Title and description are deliberately omitted: metadata
+    // is inherited, so setting them here would stamp the home page's title onto
+    // every card. Left absent, each route's own title and description fill in.
+    openGraph: {
+      type: "website",
+      siteName: t("homeTitle"),
+      locale: ogLocale(locale),
+      alternateLocale: locales.filter((l) => l !== locale).map(ogLocale),
+    },
+    twitter: { card: "summary_large_image" },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: { index: true, follow: true, "max-image-preview": "large" },
+    },
   };
 }
 

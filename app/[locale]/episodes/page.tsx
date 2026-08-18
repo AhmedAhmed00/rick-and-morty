@@ -7,6 +7,7 @@ import { EpisodeGridSkeleton } from "@/components/episode/episode-card";
 import { EpisodesSection } from "@/components/episode/episodes-section";
 import { episodesQuery } from "@/lib/queries";
 import { getQueryClient } from "@/lib/query-client";
+import { localeAlternates } from "@/lib/site";
 import { readPage } from "@/lib/search-params";
 
 export async function generateMetadata(
@@ -16,7 +17,11 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "meta" });
   const tNav = await getTranslations({ locale, namespace: "nav" });
 
-  return { title: tNav("episodes"), description: t("episodesDescription") };
+  return {
+    title: tNav("episodes"),
+    description: t("episodesDescription"),
+    alternates: localeAlternates(locale, "/episodes"),
+  };
 }
 
 export default async function EpisodesPage(

@@ -7,6 +7,7 @@ import { LocationGridSkeleton } from "@/components/location/location-card";
 import { LocationsSection } from "@/components/location/locations-section";
 import { locationsQuery } from "@/lib/queries";
 import { getQueryClient } from "@/lib/query-client";
+import { localeAlternates } from "@/lib/site";
 import { readPage } from "@/lib/search-params";
 
 export async function generateMetadata(
@@ -16,7 +17,11 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "meta" });
   const tNav = await getTranslations({ locale, namespace: "nav" });
 
-  return { title: tNav("locations"), description: t("locationsDescription") };
+  return {
+    title: tNav("locations"),
+    description: t("locationsDescription"),
+    alternates: localeAlternates(locale, "/locations"),
+  };
 }
 
 export default async function LocationsPage(

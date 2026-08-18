@@ -11,6 +11,7 @@ import { getEpisode } from "@/lib/graphql";
 import { episodeQuery } from "@/lib/queries";
 import { getQueryClient } from "@/lib/query-client";
 import { parseId } from "@/lib/parse-id";
+import { localeAlternates } from "@/lib/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/episode/[id]">,
@@ -25,6 +26,7 @@ export async function generateMetadata(
   return {
     title: `${episode.code} — ${episode.name}`,
     description: t("characterCount", { count: episode.characters.length }),
+    alternates: localeAlternates(locale, `/episode/${parsed}`),
   };
 }
 

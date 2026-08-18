@@ -12,12 +12,14 @@ import { getCharacter } from "@/lib/graphql";
 import { characterQuery } from "@/lib/queries";
 import { getQueryClient } from "@/lib/query-client";
 import { parseId } from "@/lib/parse-id";
+import { localeAlternates, ogLocale } from "@/lib/site";
 
 export async function generateMetadata(
   props: PageProps<"/[locale]/character/[id]">,
 ): Promise<Metadata> {
   const { id, locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "character" });
+  const tMeta = await getTranslations({ locale, namespace: "meta" });
 
   const parsed = parseId(id);
   const character = parsed ? await getCharacter(parsed) : null;
@@ -26,7 +28,17 @@ export async function generateMetadata(
   return {
     title: character.name,
     description: `${character.name} — ${character.status} ${character.species}. ${t("episodeCount", { count: character.episodes.length })}.`,
-    openGraph: { images: [{ url: character.image }] },
+    alternates: localeAlternates(locale, `/character/${parsed}`),
+    // The portrait is a better share card than the generic one this would
+    // otherwise inherit. openGraph replaces the parent's rather than merging into
+    // it, so the site-wide fields are repeated. Kept as "website" on purpose:
+    // under type "profile" Next drops og:site_name and og:locale entirely.
+    openGraph: {
+      type: "website",
+      siteName: tMeta("homeTitle"),
+      locale: ogLocale(locale),
+      images: [{ url: character.image, alt: character.name }],
+    },
   };
 }
 
