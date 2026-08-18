@@ -2,7 +2,12 @@
 
 import classNames from "classnames";
 import { X } from "lucide-react";
-import { useEffect, useRef, type ReactNode } from "react";
+import {
+  useEffect,
+  useRef,
+  useSyncExternalStore,
+  type ReactNode,
+} from "react";
 import { createPortal } from "react-dom";
 
 interface Props {
@@ -14,6 +19,11 @@ interface Props {
   header?: ReactNode;
   children: ReactNode;
 }
+
+/** The mount state never changes after hydration, so there is nothing to watch. */
+const subscribeToNothing = () => () => {};
+const onClient = () => true;
+const onServer = () => false;
 
 const FOCUSABLE =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
@@ -29,6 +39,12 @@ export function Sheet({
 }: Props) {
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreTo = useRef<HTMLElement | null>(null);
+
+  // A portal has no server-rendered counterpart, and this one renders whether or
+  // not the sheet is open so it can transition both ways. Reporting "not mounted"
+  // for the server snapshot and the hydrating render keeps the first client pass
+  // matching the server's empty one; the panel appears on the commit after.
+  const mounted = useSyncExternalStore(subscribeToNothing, onClient, onServer);
 
   useEffect(() => {
     if (!open) return;
@@ -69,7 +85,7 @@ export function Sheet({
     };
   }, [open, onClose]);
 
-  if (typeof document === "undefined") return null;
+  if (!mounted) return null;
 
   // Always rendered so it can transition both ways. `invisible` when closed also
   // removes it from the tab order, delayed so the slide-out finishes first.
