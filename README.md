@@ -56,6 +56,11 @@ test/             Vitest specs and MSW handlers.
 
 ## Architecture
 
+**App Router, not Pages.** Routes are server components that prefetch and hydrate, so the first paint
+carries data instead of skeletons; `generateMetadata` gives every character, episode and location its
+own title and share card, which the Pages Router can't do per record without extra plumbing; and the
+`loading` / `error` / `not-found` conventions map straight onto the design system's states.
+
 I deliberately did not use feature-based or clean architecture. This is a read-only browser over a
 public API — no writes, no auth, no business rules to protect — so those layers would add indirection
 without removing any real coupling. The code is grouped by role instead, which keeps the architecture
@@ -106,6 +111,18 @@ plus canonical URLs, `hreflang` pairs linking `/en` and `/ar`, and a generated `
 `npm test` — 41 tests across 6 files with Vitest, React Testing Library and MSW. The mocks reproduce
 the API's real quirks, covering the URL contract, both data adapters, the `Select` listbox, the
 pagination algorithm and the status badge.
+
+## Trade-offs
+
+- **Loading states are scoped to the list routes.** A segment-level `loading` file opens a Suspense
+  boundary above the detail pages, and streaming commits the response before `notFound()` runs, so a
+  missing character returns HTTP 200 with 404 content. Scoping it keeps the status codes honest.
+- **The home page fetches on the server without React Query.** A static overview with no filtering or
+  pagination — the query cache would add indirection and buy nothing.
+- **Metadata reads the record a second time.** React's `cache()` would collapse it, and is
+  the right move as soon as detail pages grow; at this size the extra layer costs more than it saves.
+- **Detail pages render on demand.** `generateStaticParams` could prerender popular ids, but across
+  826 characters the build cost outweighed the benefit.
 
 ## Future improvements
 
