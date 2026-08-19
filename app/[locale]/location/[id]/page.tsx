@@ -7,7 +7,7 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { LocationsSection } from "@/components/location/locations-section";
-import { getLocation } from "@/services/api";
+import { getLocation } from "@/services/rest";
 import { locationQuery } from "@/services/queries";
 import { getQueryClient } from "@/services/query-client";
 import { parseId } from "@/utils/parse-id";

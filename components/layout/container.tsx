@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import type { ReactNode } from "react";
 
-/** Centres content at the shared max width and applies the page gutter. */
 export function Container({
   className,
   children,

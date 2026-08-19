@@ -4,10 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { useCallback } from "react";
 import { usePathname } from "@/i18n/navigation";
 
-/**
- * Builds a page URL, keeping the active filters. Navigating it re-runs the
- * server component, so the list is re-fetched there rather than in the browser.
- */
+/** Page URL keeping the active filters. Navigating it re-runs the server component. */
 export function usePageHref(key = "page") {
   const searchParams = useSearchParams();
   const pathname = usePathname();
@@ -25,7 +22,6 @@ export function usePageHref(key = "page") {
   );
 }
 
-/** Reads the current page from the URL, clamped to a valid position. */
 export function usePageParam(key = "page") {
   const searchParams = useSearchParams();
   const page = Number(searchParams.get(key));

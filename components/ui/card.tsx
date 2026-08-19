@@ -8,7 +8,6 @@ interface CardProps {
   children: ReactNode;
 }
 
-/** The shared surface for every card in the app. */
 export function Card({
   as: Tag = "div",
   interactive = false,

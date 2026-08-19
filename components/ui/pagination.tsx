@@ -7,7 +7,6 @@ import type { MouseEvent } from "react";
 import { Link } from "@/i18n/navigation";
 import { buildRange } from "@/utils/pagination";
 
-/** True for a plain left click, i.e. one the app should handle itself. */
 function isPlainClick(event: MouseEvent) {
   return (
     event.button === 0 &&
@@ -24,7 +23,7 @@ const ITEM =
 interface Props {
   page: number;
   pages: number;
-  /** Real destination for each page, so links are shareable and openable in a new tab. */
+  /** Real destination, so pages are shareable and open in a new tab. */
   hrefFor: (page: number) => string;
   /** Called for plain left clicks only; the component preventDefaults first. */
   onNavigate?: (page: number) => void;

@@ -17,7 +17,6 @@ import { ogLocale, siteUrl } from "@/utils/site";
 import { Providers } from "../providers";
 import "../globals.css";
 
-// Body faces, one per script.
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const notoArabic = Noto_Sans_Arabic({
@@ -25,7 +24,7 @@ const notoArabic = Noto_Sans_Arabic({
   variable: "--font-noto-arabic",
 });
 
-// Display faces for headings, again one per script.
+// Display faces for headings.
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["500", "700"],
@@ -54,14 +53,13 @@ export async function generateMetadata(
   const t = await getTranslations({ locale, namespace: "meta" });
 
   return {
-    // Every relative URL below — and in each page's alternates — resolves against this.
+    // Every relative URL below resolves against this.
     metadataBase: new URL(siteUrl),
     title: { default: t("homeTitle"), template: `%s · ${t("homeTitle")}` },
     description: t("homeDescription"),
-    // Inherited by every route, which is what puts a share image on pages that
-    // don't define one. Title and description are deliberately omitted: metadata
-    // is inherited, so setting them here would stamp the home page's title onto
-    // every card. Left absent, each route's own title and description fill in.
+    // Inherited by every route, which is what gives pages a share image without
+    // defining one. Title and description are omitted on purpose: set here they
+    // would stamp the home page's onto every card.
     openGraph: {
       type: "website",
       siteName: t("homeTitle"),

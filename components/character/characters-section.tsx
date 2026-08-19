@@ -4,7 +4,6 @@ import { CharacterGrid, CharacterGridSkeleton } from "./character-grid";
 import { PagedSection } from "@/components/ui/paged-section";
 import { charactersQuery } from "@/services/queries";
 
-/** Paginated character list, used for the "more characters" sections. */
 export function CharactersSection() {
   return (
     <PagedSection

@@ -1,9 +1,9 @@
 import { keepPreviousData, queryOptions } from "@tanstack/react-query";
-import { getCharacters, getEpisodes, getLocation, getLocations } from "@/services/api";
+import { getCharacters, getEpisodes, getLocation, getLocations } from "@/services/rest";
 import { getCharacter, getEpisode } from "@/services/graphql";
 import type { CharacterFilters, ListFilters } from "@/types";
 
-// Declared once and used by both sides: the server prefetches, the client
+// One definition for both sides: the server prefetches and the client
 // subscribes to the same object, so the keys can't drift.
 
 const LIST_STALE_TIME = 5 * 60_000;

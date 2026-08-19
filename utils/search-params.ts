@@ -7,11 +7,8 @@ import {
 import type { CharacterFilters } from "@/types";
 import { GENDERS, SPECIES, STATUSES } from "@/types";
 
-/**
- * URL contract for the character list, shared by the server page and the client.
- * `parseAsStringLiteral` rejects values outside the known domain, so a
- * hand-edited `?status=zombie` never reaches the API.
- */
+// Shared by the server page and the client. `parseAsStringLiteral` rejects
+// values outside the known domain, so `?status=zombie` never reaches the API.
 export const characterParams = {
   page: parseAsInteger.withDefault(1),
   name: parseAsString.withDefault(""),
@@ -22,7 +19,6 @@ export const characterParams = {
 
 export const loadCharacterParams = createLoader(characterParams);
 
-/** Page number for the simple lists, which take no other filters. */
 const pageOnly = { page: parseAsInteger.withDefault(1) };
 const loadPage = createLoader(pageOnly);
 

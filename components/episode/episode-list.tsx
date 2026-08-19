@@ -5,7 +5,6 @@ import { Card } from "@/components/ui/card";
 import { Link } from "@/i18n/navigation";
 import type { Episode } from "@/types";
 
-/** Compact episode rows, used on the character detail page. */
 export function EpisodeList({ episodes }: { episodes: Episode[] }) {
   return (
     <ul className="grid gap-grid sm:grid-cols-2 lg:grid-cols-3">

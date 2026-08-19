@@ -48,7 +48,7 @@ runs without a `.env.local`.
 ```
 app/[locale]/     Routes — parse params, prefetch, render.
 components/       UI primitives, layout, one folder per entity.
-services/         Data access: REST, GraphQL, and the TanStack Query definitions.
+services/         Data access: the fetch transport, REST and GraphQL clients, query definitions.
 types/            Shared domain and API response types.
 utils/            Pure helpers — URL parsers, pagination, id parsing, metadata.
 hooks/            Client-side state helpers.

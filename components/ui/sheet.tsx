@@ -20,7 +20,6 @@ interface Props {
   children: ReactNode;
 }
 
-/** The mount state never changes after hydration, so there is nothing to watch. */
 const subscribeToNothing = () => () => {};
 const onClient = () => true;
 const onServer = () => false;
@@ -28,7 +27,6 @@ const onServer = () => false;
 const FOCUSABLE =
   'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-/** Slide-in panel used for the mobile navigation. */
 export function Sheet({
   open,
   onClose,
@@ -40,10 +38,9 @@ export function Sheet({
   const panelRef = useRef<HTMLDivElement>(null);
   const restoreTo = useRef<HTMLElement | null>(null);
 
-  // A portal has no server-rendered counterpart, and this one renders whether or
-  // not the sheet is open so it can transition both ways. Reporting "not mounted"
-  // for the server snapshot and the hydrating render keeps the first client pass
-  // matching the server's empty one; the panel appears on the commit after.
+  // Reporting "not mounted" for the server snapshot and the hydrating render
+  // keeps the first client pass matching the server's empty one; the portal
+  // appears on the commit after.
   const mounted = useSyncExternalStore(subscribeToNothing, onClient, onServer);
 
   useEffect(() => {
@@ -87,8 +84,8 @@ export function Sheet({
 
   if (!mounted) return null;
 
-  // Always rendered so it can transition both ways. `invisible` when closed also
-  // removes it from the tab order, delayed so the slide-out finishes first.
+  // Always rendered so it can transition both ways; `invisible` when closed
+  // also drops it from the tab order, delayed until the slide-out finishes.
   return createPortal(
     <div
       className={classNames(

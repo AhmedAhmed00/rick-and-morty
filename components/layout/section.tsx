@@ -4,7 +4,6 @@ import { Link } from "@/i18n/navigation";
 
 interface Props {
   title: string;
-  /** Renders a "see all" action next to the heading. */
   seeAllHref?: string;
   seeAllLabel?: string;
   icon?: ReactNode;

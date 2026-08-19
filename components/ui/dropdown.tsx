@@ -28,10 +28,7 @@ interface Props {
   className?: string;
 }
 
-/**
- * WAI-ARIA menu button. The menu is portalled and positioned from the trigger's
- * box so an ancestor's overflow can't clip it.
- */
+/** The menu is portalled so an ancestor's overflow can't clip it. */
 export function Dropdown({ label, trigger, items, className }: Props) {
   const id = useId();
   const [open, setOpen] = useState(false);

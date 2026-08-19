@@ -1,8 +1,4 @@
-/**
- * Windowed page list, e.g. buildRange(7, 42) -> [1, "gap", 6, 7, 8, "gap", 42].
- *
- * Kept apart from the component so the algorithm can be tested on its own.
- */
+/** Windowed page list, e.g. buildRange(7, 42) -> [1, "gap", 6, 7, 8, "gap", 42]. */
 export function buildRange(
   page: number,
   pages: number,

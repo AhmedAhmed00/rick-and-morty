@@ -13,11 +13,7 @@ const SHORT: Record<string, string> = { en: "EN", ar: "ع" };
 
 interface Props {
   className?: string;
-  /**
-   * "inline" lays the locales out as a segmented control instead of a menu.
-   * Used inside the mobile sheet, where a portalled menu would float over the
-   * rows beneath it and sit outside the sheet's focus trap.
-   */
+  /** "inline" is for the mobile sheet, where a portalled menu would sit outside its focus trap. */
   variant?: "dropdown" | "inline";
 }
 

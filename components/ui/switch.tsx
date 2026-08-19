@@ -14,7 +14,6 @@ interface Props {
   className?: string;
 }
 
-/** Two-state sliding toggle. The thumb translation flips under RTL. */
 export function Switch({
   checked,
   onCheckedChange,
@@ -35,7 +34,6 @@ export function Switch({
         className,
       )}
     >
-      {/* Thumb sits under the labels so both stay readable. */}
       <span
         aria-hidden
         className={classNames(

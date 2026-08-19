@@ -22,10 +22,7 @@ interface Props {
   className?: string;
 }
 
-/**
- * WAI-ARIA listbox, used instead of a native `<select>` so the panel can be
- * styled. Keyboard support matches a native one.
- */
+/** WAI-ARIA listbox, used over a native `<select>` so the panel can be styled. */
 export function Select({
   label,
   value,

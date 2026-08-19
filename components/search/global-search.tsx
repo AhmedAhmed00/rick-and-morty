@@ -14,7 +14,6 @@ const TARGETS = [
   { key: "episodes", path: "/episodes", Icon: MonitorPlay },
 ] as const;
 
-/** Search entry point on the home page: picks a section, then hands off to it. */
 export function GlobalSearch() {
   const t = useTranslations("search");
   const tNav = useTranslations("nav");

@@ -5,7 +5,6 @@ import { ArrowUp } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-/** Floating scroll-to-top control, revealed once the page has scrolled. */
 export function BackToTop() {
   const t = useTranslations("footer");
   const [visible, setVisible] = useState(false);

@@ -11,16 +11,12 @@ import type { Page } from "@/types";
 
 // K is a parameter because queryFn is contravariant in the key type.
 interface Props<T, K extends QueryKey> {
-  /** Query definition for a given page, taken from lib/queries.ts. */
   makeQuery: (page: number) => UseQueryOptions<Page<T>, Error, Page<T>, K>;
   children: (items: T[]) => ReactNode;
   skeleton: ReactNode;
 }
 
-/**
- * Paginated list with the page held in the URL. Shared by the character,
- * episode and location sections so the states are defined once.
- */
+/** Paginated list with the page held in the URL. */
 export function PagedSection<T, K extends QueryKey>({
   makeQuery,
   children,

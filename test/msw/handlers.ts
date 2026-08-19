@@ -89,7 +89,7 @@ export const handlers = [
   }),
 ];
 
-// --- GraphQL, used by the two detail pages -------------------------------
+// --- GraphQL, used by the two detail pages ---
 
 const gql = graphql.link("https://rickandmortyapi.com/graphql");
 

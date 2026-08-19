@@ -1,17 +1,16 @@
 import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client";
 import type { TypedDocumentNode } from "@apollo/client";
-import { ApiError } from "@/services/api";
-import type { CharacterDetail, EpisodeDetail, Gender, Status } from "@/types";
-import { GENDERS, STATUSES } from "@/types";
+import { ApiError } from "@/services/api-error";
+import type { CharacterDetail, EpisodeDetail } from "@/types";
+import type {
+  CharacterData,
+  EpisodeData,
+  GqlCharacter,
+  GqlEpisode,
+  IdVars,
+} from "@/types/graphql";
+import { asGender, asStatus } from "@/utils/normalize";
 
-/*
- * GraphQL for the two detail pages: REST needs two round trips there (record,
- * then its episodes/characters), one GraphQL query returns them nested.
- *
- * Apollo is the transport only — no hooks, no provider, no Apollo cache.
- * TanStack Query owns cached state, so queries run `no-cache`, which also keeps
- * a module-level client from leaking data between server requests.
- */
 const GRAPHQL_URL =
   process.env.NEXT_PUBLIC_GRAPHQL_API_URL ??
   "https://rickandmortyapi.com/graphql";
@@ -20,40 +19,6 @@ const client = new ApolloClient({
   link: new HttpLink({ uri: GRAPHQL_URL }),
   cache: new InMemoryCache(),
 });
-
-interface GqlCharacter {
-  id: string;
-  name: string;
-  status: string;
-  species: string;
-  gender: string;
-  image: string;
-  origin: { name: string } | null;
-  location: { name: string } | null;
-  episode: { id: string }[];
-}
-
-interface GqlEpisode {
-  id: string;
-  name: string;
-  air_date: string;
-  episode: string;
-  characters: { id: string }[];
-}
-
-interface CharacterData {
-  character:
-    | (Omit<GqlCharacter, "episode"> & { episode: GqlEpisode[] })
-    | null;
-}
-
-interface EpisodeData {
-  episode: (Omit<GqlEpisode, "characters"> & { characters: GqlCharacter[] }) | null;
-}
-
-interface IdVars {
-  id: string;
-}
 
 const CHARACTER: TypedDocumentNode<CharacterData, IdVars> = gql`
   query Character($id: ID!) {
@@ -110,12 +75,6 @@ const EPISODE: TypedDocumentNode<EpisodeData, IdVars> = gql`
     }
   }
 `;
-
-const asStatus = (value: string): Status =>
-  (STATUSES as readonly string[]).includes(value) ? (value as Status) : "unknown";
-
-const asGender = (value: string): Gender =>
-  (GENDERS as readonly string[]).includes(value) ? (value as Gender) : "unknown";
 
 function toCharacter(raw: GqlCharacter) {
   return {
@@ -178,7 +137,7 @@ export async function getCharacter(
   if (!character) return null;
 
   return {
-    ...toCharacter({ ...character, episode: character.episode }),
+    ...toCharacter(character),
     episodes: character.episode.map(toEpisode),
   };
 }
@@ -191,7 +150,7 @@ export async function getEpisode(
   if (!episode) return null;
 
   return {
-    ...toEpisode({ ...episode, characters: episode.characters }),
+    ...toEpisode(episode),
     characters: episode.characters.map(toCharacter),
   };
 }

@@ -4,11 +4,8 @@ import classNames from "classnames";
 import { useTranslations } from "next-intl";
 import type { Status } from "@/types";
 
-/**
- * The single place a character status maps to a colour. Class strings are
- * complete literals because Tailwind scans source text and would not see a
- * name assembled at runtime.
- */
+// Complete class literals: Tailwind scans source text and would not see a
+// name assembled at runtime.
 const DOT: Record<Status, string> = {
   Alive: "bg-alive",
   Dead: "bg-dead",

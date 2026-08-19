@@ -29,10 +29,9 @@ export async function generateMetadata(
     title: character.name,
     description: `${character.name} — ${character.status} ${character.species}. ${t("episodeCount", { count: character.episodes.length })}.`,
     alternates: localeAlternates(locale, `/character/${parsed}`),
-    // The portrait is a better share card than the generic one this would
-    // otherwise inherit. openGraph replaces the parent's rather than merging into
-    // it, so the site-wide fields are repeated. Kept as "website" on purpose:
-    // under type "profile" Next drops og:site_name and og:locale entirely.
+    // openGraph replaces the parent's rather than merging, so the site-wide
+    // fields are repeated. "website" on purpose: under "profile" Next drops
+    // og:site_name and og:locale entirely.
     openGraph: {
       type: "website",
       siteName: tMeta("homeTitle"),

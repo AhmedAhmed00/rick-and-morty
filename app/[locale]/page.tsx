@@ -8,15 +8,15 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { EpisodeGrid } from "@/components/episode/episode-card";
 import { LocationGrid } from "@/components/location/location-card";
 import { GlobalSearch } from "@/components/search/global-search";
-import { getCharacters, getEpisodes, getLocations } from "@/services/api";
+import { getCharacters, getEpisodes, getLocations } from "@/services/rest";
 import { localeAlternates } from "@/utils/site";
 import highlight from "@/public/HighLightImage.png";
 
 // Two full rows in the widest grid.
 const PREVIEW_COUNT = 10;
 
-// Title and description come from the layout; this exists so the home page
-// declares its own canonical and hreflang pair rather than inheriting none.
+// Title and description come from the layout; this adds the canonical and
+// hreflang pair, which is not inherited.
 export async function generateMetadata(
   props: PageProps<"/[locale]">,
 ): Promise<Metadata> {
@@ -31,8 +31,7 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
   const t = await getTranslations("home");
   const tNav = await getTranslations("nav");
 
-  // A static overview, so the previews are fetched directly rather than
-  // through React Query.
+  // A static overview, so no React Query.
   const [characters, episodes, locations] = await Promise.all([
     getCharacters({ page: 1 }),
     getEpisodes({ page: 1 }),
@@ -61,8 +60,6 @@ export default async function HomePage({ params }: PageProps<"/[locale]">) {
           className="h-auto w-full max-w-xs self-end justify-self-center sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-xl"
         />
       </Container>
-
-
 
       <Container className="space-y-section py-section">
                   <GlobalSearch />

@@ -26,10 +26,8 @@ interface Props {
   className?: string;
 }
 
-/**
- * Config-driven filter bar for any paginated list. The URL is the single source
- * of truth: nuqs writes to it, the page's query reads from it.
- */
+// The URL is the single source of truth: nuqs writes to it, the page's query
+// reads from it.
 export function FilterBar({
   filters = [],
   searchable = true,
@@ -84,7 +82,7 @@ export function FilterBar({
     }),
   ];
 
-  /** Any filter change returns to page 1, so nobody lands past the end. */
+  // Any filter change returns to page 1, so nobody lands past the end.
   function apply(name: string, value: string | null) {
     void setValues({ [name]: value, page: null });
   }
