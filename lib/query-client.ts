@@ -1,5 +1,6 @@
 import { QueryClient, environmentManager } from "@tanstack/react-query";
-import { ApiError } from "@/services/api-error";
+import { cache } from "react";
+import { ApiError } from "@/utils/api-error";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -17,11 +18,17 @@ function makeQueryClient() {
   });
 }
 
+// One client per server request, shared by generateMetadata and the page body.
+// Without this each caller got its own, so a record fetched for the title was
+// fetched again for the page — and Next only memoises fetch for GET, not the
+// POSTs GraphQL sends.
+const getServerQueryClient = cache(makeQueryClient);
+
 let browserQueryClient: QueryClient | undefined;
 
 export function getQueryClient() {
-  // A fresh client per server request; a single shared one in the browser.
-  if (environmentManager.isServer()) return makeQueryClient();
+  // One per request on the server; a single shared one in the browser.
+  if (environmentManager.isServer()) return getServerQueryClient();
   browserQueryClient ??= makeQueryClient();
   return browserQueryClient;
 }

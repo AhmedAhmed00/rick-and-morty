@@ -16,7 +16,7 @@ export function EpisodeList({ episodes }: { episodes: Episode[] }) {
             </span>
             <span className="min-w-0 flex-1">
               <Link
-                href={`/episode/${episode.id}`}
+                href={`/episodes/${episode.id}`}
                 className="block truncate text-sm font-medium after:absolute after:inset-0"
               >
                 {episode.name}

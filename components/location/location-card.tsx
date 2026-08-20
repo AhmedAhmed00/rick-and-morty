@@ -16,7 +16,7 @@ export function LocationCard({ location }: { location: Location }) {
     >
       <Globe size={28} aria-hidden className="text-primary" />
       <p className="mt-3 text-base font-medium">
-        <Link href={`/location/${location.id}`} className="after:absolute after:inset-0">
+        <Link href={`/locations/${location.id}`} className="after:absolute after:inset-0">
           {location.type || "unknown"}
         </Link>
       </p>

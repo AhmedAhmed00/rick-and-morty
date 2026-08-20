@@ -34,7 +34,7 @@ export function CharacterCard({ character, eager = false }: Props) {
         <h3 className="text-lg font-semibold leading-tight">
           {/* Stretched link makes the whole card the target. */}
           <Link
-            href={`/character/${character.id}`}
+            href={`/characters/${character.id}`}
             className="after:absolute after:inset-0"
           >
             {character.name}

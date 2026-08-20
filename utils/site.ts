@@ -1,10 +1,5 @@
 import { locales, routing } from "@/i18n/routing";
 
-/**
- * Metadata needs an absolute origin — crawlers resolve nothing relative. Vercel
- * exposes the production host; the explicit variable wins so a custom domain can
- * override it.
- */
 export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL ||
   (process.env.VERCEL_PROJECT_PRODUCTION_URL
@@ -19,7 +14,7 @@ export const ogLocale = (locale: string) => OG_LOCALES[locale] ?? locale;
 
 /**
  * Canonical plus hreflang for one page, where `path` is the route below the
- * locale segment, e.g. "/character/1". Declared per route because a canonical
+ * locale segment, e.g. "/characters/1". Declared per route because a canonical
  * set on the layout would be inherited by every page.
  */
 export function localeAlternates(locale: string, path = "") {

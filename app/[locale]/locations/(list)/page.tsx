@@ -6,7 +6,7 @@ import { Container } from "@/components/layout/container";
 import { LocationGridSkeleton } from "@/components/location/location-card";
 import { LocationsSection } from "@/components/location/locations-section";
 import { locationsQuery } from "@/services/queries";
-import { getQueryClient } from "@/services/query-client";
+import { getQueryClient } from "@/lib/query-client";
 import { localeAlternates } from "@/utils/site";
 import { readPage } from "@/utils/search-params";
 

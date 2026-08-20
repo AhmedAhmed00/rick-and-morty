@@ -20,9 +20,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/characters",
     "/episodes",
     "/locations",
-    ...idsUpTo(characters.count).map((id) => `/character/${id}`),
-    ...idsUpTo(episodes.count).map((id) => `/episode/${id}`),
-    ...idsUpTo(locations.count).map((id) => `/location/${id}`),
+    ...idsUpTo(characters.count).map((id) => `/characters/${id}`),
+    ...idsUpTo(episodes.count).map((id) => `/episodes/${id}`),
+    ...idsUpTo(locations.count).map((id) => `/locations/${id}`),
   ];
 
   return paths.map((path) => ({

@@ -14,7 +14,7 @@ export function EpisodeCard({ episode }: { episode: Episode }) {
         <MonitorPlay size={18} aria-hidden className="shrink-0 text-primary" />
         {/* min-w-0 lets the flex child shrink so `truncate` takes effect. */}
         <Link
-          href={`/episode/${episode.id}`}
+          href={`/episodes/${episode.id}`}
           className="block min-w-0 flex-1 truncate after:absolute after:inset-0"
         >
           {episode.name}

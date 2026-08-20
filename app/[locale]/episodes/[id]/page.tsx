@@ -7,31 +7,35 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { EpisodesSection } from "@/components/episode/episodes-section";
-import { getEpisode } from "@/services/graphql";
-import { episodeQuery } from "@/services/queries";
-import { getQueryClient } from "@/services/query-client";
+import { episodesQuery } from "@/services/queries";
+import { episodeQuery } from "@/services/graphql";
+import { getQueryClient } from "@/lib/query-client";
 import { parseId } from "@/utils/parse-id";
+import { readPage } from "@/utils/search-params";
 import { localeAlternates } from "@/utils/site";
 
 export async function generateMetadata(
-  props: PageProps<"/[locale]/episode/[id]">,
+  props: PageProps<"/[locale]/episodes/[id]">,
 ): Promise<Metadata> {
   const { id, locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "episode" });
 
   const parsed = parseId(id);
-  const episode = parsed ? await getEpisode(parsed) : null;
+  // Same client the page body uses, so this fetch serves both.
+  const episode = parsed
+    ? await getQueryClient().fetchQuery(episodeQuery(parsed))
+    : null;
   if (!episode) return { title: t("notFound") };
 
   return {
     title: `${episode.code} — ${episode.name}`,
     description: t("characterCount", { count: episode.characters.length }),
-    alternates: localeAlternates(locale, `/episode/${parsed}`),
+    alternates: localeAlternates(locale, `/episodes/${parsed}`),
   };
 }
 
 export default async function EpisodePage(
-  props: PageProps<"/[locale]/episode/[id]">,
+  props: PageProps<"/[locale]/episodes/[id]">,
 ) {
   const { id } = await props.params;
   const parsed = parseId(id);
@@ -40,8 +44,15 @@ export default async function EpisodePage(
   const t = await getTranslations("episode");
   const tCharacter = await getTranslations("character");
 
+  const page = readPage(await props.searchParams);
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(episodeQuery(parsed));
+
+  // In parallel, and awaited rather than streamed: notFound() must run before
+  // the response commits or a missing episode still returns HTTP 200.
+  await Promise.all([
+    queryClient.prefetchQuery(episodeQuery(parsed)),
+    queryClient.prefetchQuery(episodesQuery({ page })),
+  ]);
 
   const episode = queryClient.getQueryData(episodeQuery(parsed).queryKey);
   if (!episode) notFound();

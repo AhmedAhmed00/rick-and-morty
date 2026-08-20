@@ -6,7 +6,7 @@ import { Container } from "@/components/layout/container";
 import { EpisodeGridSkeleton } from "@/components/episode/episode-card";
 import { EpisodesSection } from "@/components/episode/episodes-section";
 import { episodesQuery } from "@/services/queries";
-import { getQueryClient } from "@/services/query-client";
+import { getQueryClient } from "@/lib/query-client";
 import { localeAlternates } from "@/utils/site";
 import { readPage } from "@/utils/search-params";
 

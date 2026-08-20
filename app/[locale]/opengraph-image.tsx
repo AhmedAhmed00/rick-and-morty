@@ -10,7 +10,7 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default async function OpengraphImage({
+export default async function OpengrapذhImage({
   params,
 }: {
   params: Promise<{ locale: string }>;

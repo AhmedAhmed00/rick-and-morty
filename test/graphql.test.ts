@@ -1,6 +1,6 @@
 import { HttpResponse, graphql } from "msw";
 import { describe, expect, it } from "vitest";
-import { ApiError } from "@/services/api-error";
+import { ApiError } from "@/utils/api-error";
 import { getCharacter, getEpisode } from "@/services/graphql";
 import { server } from "./msw/server";
 

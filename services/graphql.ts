@@ -1,6 +1,9 @@
-import { ApolloClient, HttpLink, InMemoryCache, gql } from "@apollo/client";
-import type { TypedDocumentNode } from "@apollo/client";
-import { ApiError } from "@/services/api-error";
+import type { TypedDocumentNode } from "@graphql-typed-document-node/core";
+import { parse } from "graphql";
+import { queryOptions } from "@tanstack/react-query";
+import { GraphQLClient, type Variables } from "graphql-request";
+import { ApiError } from "@/utils/api-error";
+import { DETAIL_STALE_TIME } from "@/services/queries";
 import type { CharacterDetail, EpisodeDetail } from "@/types";
 import type {
   CharacterData,
@@ -15,12 +18,16 @@ const GRAPHQL_URL =
   process.env.NEXT_PUBLIC_GRAPHQL_API_URL ??
   "https://rickandmortyapi.com/graphql";
 
-const client = new ApolloClient({
-  link: new HttpLink({ uri: GRAPHQL_URL }),
-  cache: new InMemoryCache(),
-});
+const client = new GraphQLClient(GRAPHQL_URL);
 
-const CHARACTER: TypedDocumentNode<CharacterData, IdVars> = gql`
+
+function gql<TData, TVars extends Variables>(
+  source: TemplateStringsArray,
+): TypedDocumentNode<TData, TVars> {
+  return parse(source.join("")) as TypedDocumentNode<TData, TVars>;
+}
+
+const CHARACTER = gql<CharacterData, IdVars>`
   query Character($id: ID!) {
     character(id: $id) {
       id
@@ -48,7 +55,7 @@ const CHARACTER: TypedDocumentNode<CharacterData, IdVars> = gql`
   }
 `;
 
-const EPISODE: TypedDocumentNode<EpisodeData, IdVars> = gql`
+const EPISODE = gql<EpisodeData, IdVars>`
   query Episode($id: ID!) {
     episode(id: $id) {
       id
@@ -106,19 +113,17 @@ async function run<TData>(
   signal?: AbortSignal,
 ): Promise<TData> {
   try {
-    const result = await client.query({
-      query: document,
+
+    const data = await client.request({
+      document,
       variables: { id: String(id) },
-      fetchPolicy: "no-cache",
-      context: { fetchOptions: { signal } },
+      signal,
     });
 
-    // A missing record is `data.x === null` with no error — a valid response.
-    if (!result.data) throw new ApiError(502, "GraphQL response had no data");
-    return result.data;
+    if (!data) throw new ApiError(502, "GraphQL response had no data");
+    return data;
   } catch (error) {
-    // Apollo throws on a populated `errors` array; normalise it so callers and
-    // the query client's retry guard only ever see ApiError.
+   
     if (error instanceof ApiError) throw error;
     if (error instanceof DOMException && error.name === "AbortError") throw error;
 
@@ -154,3 +159,18 @@ export async function getEpisode(
     characters: episode.characters.map(toCharacter),
   };
 }
+
+
+export const characterQuery = (id: number) =>
+  queryOptions({
+    queryKey: ["character", id] as const,
+    queryFn: ({ signal }) => getCharacter(id, signal),
+    staleTime: DETAIL_STALE_TIME,
+  });
+
+export const episodeQuery = (id: number) =>
+  queryOptions({
+    queryKey: ["episode", id] as const,
+    queryFn: ({ signal }) => getEpisode(id, signal),
+    staleTime: DETAIL_STALE_TIME,
+  });

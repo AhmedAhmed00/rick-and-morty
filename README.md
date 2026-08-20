@@ -6,7 +6,7 @@ episodes and locations, in English and Arabic, with light and dark themes.
 **Live demo:** <https://rick-and-morty-tempo.vercel.app/en>
 
 Built with **Next.js 16 (App Router)**, **React 19**, **TanStack Query**, **Tailwind CSS v4**,
-**TypeScript**, **nuqs**, **next-intl** and **Apollo Client**.
+**TypeScript**, **nuqs**, **next-intl** and **graphql-request**.
 
 ## Highlights
 
@@ -74,8 +74,8 @@ matched to the complexity that actually exists.
   `HydrationBoundary`, so the first paint carries data rather than skeletons.
 - **REST and GraphQL.** REST covers lists, search and pagination. GraphQL covers the detail pages,
   where returning the episodes nested removes a round trip.
-- **A single cache.** Apollo is used as transport only, so TanStack Query owns all cached server
-  state.
+- **A single cache.** graphql-request is a transport with no cache of its own, so TanStack Query
+  owns all cached server state.
 - **URL as the source of truth.** Filters and pagination live in the query string via nuqs, shared by
   server and client, and invalid values never reach the API.
 - **Config-driven `FilterBar`.** It owns every URL write, so adding a filter is a config entry rather

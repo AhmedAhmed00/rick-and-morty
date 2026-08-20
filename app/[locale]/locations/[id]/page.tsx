@@ -7,31 +7,34 @@ import { CharacterGrid } from "@/components/character/character-grid";
 import { Container } from "@/components/layout/container";
 import { Section } from "@/components/layout/section";
 import { LocationsSection } from "@/components/location/locations-section";
-import { getLocation } from "@/services/rest";
-import { locationQuery } from "@/services/queries";
-import { getQueryClient } from "@/services/query-client";
+import { locationQuery, locationsQuery } from "@/services/queries";
+import { getQueryClient } from "@/lib/query-client";
 import { parseId } from "@/utils/parse-id";
+import { readPage } from "@/utils/search-params";
 import { localeAlternates } from "@/utils/site";
 
 export async function generateMetadata(
-  props: PageProps<"/[locale]/location/[id]">,
+  props: PageProps<"/[locale]/locations/[id]">,
 ): Promise<Metadata> {
   const { id, locale } = await props.params;
   const t = await getTranslations({ locale, namespace: "location" });
 
   const parsed = parseId(id);
-  const location = parsed ? await getLocation(parsed) : null;
+  // Same client the page body uses, so this fetch serves both.
+  const location = parsed
+    ? await getQueryClient().fetchQuery(locationQuery(parsed))
+    : null;
   if (!location) return { title: t("notFound") };
 
   return {
     title: `${location.name} — ${location.dimension || t("dimension")}`,
     description: t("residentCount", { count: location.residents.length }),
-    alternates: localeAlternates(locale, `/location/${parsed}`),
+    alternates: localeAlternates(locale, `/locations/${parsed}`),
   };
 }
 
 export default async function LocationPage(
-  props: PageProps<"/[locale]/location/[id]">,
+  props: PageProps<"/[locale]/locations/[id]">,
 ) {
   const { id } = await props.params;
   const parsed = parseId(id);
@@ -39,8 +42,15 @@ export default async function LocationPage(
 
   const t = await getTranslations("location");
 
+  const page = readPage(await props.searchParams);
   const queryClient = getQueryClient();
-  await queryClient.prefetchQuery(locationQuery(parsed));
+
+  // In parallel, and awaited rather than streamed: notFound() must run before
+  // the response commits or a missing location still returns HTTP 200.
+  await Promise.all([
+    queryClient.prefetchQuery(locationQuery(parsed)),
+    queryClient.prefetchQuery(locationsQuery({ page })),
+  ]);
 
   const location = queryClient.getQueryData(locationQuery(parsed).queryKey);
   if (!location) notFound();
