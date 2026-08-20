@@ -3,9 +3,10 @@ import { getTranslations } from "next-intl/server";
 import { Container } from "./container";
 import { LocaleSwitcher } from "./locale-switcher";
 import { MobileNav } from "./mobile-nav";
+import { NavigationProgress } from "./navigation-progress";
 import { NAV_LINKS } from "./nav-links";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import logo from "@/public/LogoA.png";
 
 export async function Navbar() {
@@ -38,6 +39,8 @@ export async function Navbar() {
           <MobileNav />
         </div>
       </Container>
+
+      <NavigationProgress />
     </header>
   );
 }

@@ -85,6 +85,40 @@
   --radius-card: 0.75rem; /* cards, panels */
 
   --container-page: 78rem; /* max content width */
+
+  /* Header navigation bar. Growing `width` from the start edge means the fill
+     follows the reading direction, so Arabic runs right-to-left for free.
+     Decelerating hard and stalling at 90%: the width is a guess, and stopping
+     short of the edge is what keeps it from claiming to have arrived. */
+  --animate-nav-progress: nav-progress 6s cubic-bezier(0.1, 0.85, 0.25, 1)
+    forwards;
+
+  /* Landing carries it the rest of the way, then it fades. */
+  --animate-nav-progress-done: nav-progress-done 400ms ease-out forwards;
+
+  @keyframes nav-progress {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 90%;
+    }
+  }
+
+  @keyframes nav-progress-done {
+    0% {
+      width: 90%;
+      opacity: 1;
+    }
+    55% {
+      width: 100%;
+      opacity: 1;
+    }
+    100% {
+      width: 100%;
+      opacity: 0;
+    }
+  }
 }
 
 @layer base {

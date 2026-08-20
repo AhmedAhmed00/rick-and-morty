@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { ReactNode } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 
 interface Props {
   title: string;

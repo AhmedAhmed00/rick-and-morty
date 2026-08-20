@@ -5,7 +5,7 @@ import { Dna, MapPin } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Card } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import type { Character } from "@/types";
 
 interface Props {

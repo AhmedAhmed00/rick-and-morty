@@ -2,7 +2,7 @@
 
 import { CalendarDays } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import type { Episode } from "@/types";
 
 export function EpisodeList({ episodes }: { episodes: Episode[] }) {

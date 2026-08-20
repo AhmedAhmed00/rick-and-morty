@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import type { MouseEvent } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import { buildRange } from "@/utils/pagination";
 
 function isPlainClick(event: MouseEvent) {

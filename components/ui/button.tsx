@@ -1,6 +1,6 @@
 import classNames from "classnames";
 import type { ButtonHTMLAttributes, ComponentProps, ReactNode } from "react";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 
 export type ButtonVariant = "primary" | "secondary" | "ghost";
 export type ButtonSize = "sm" | "md";

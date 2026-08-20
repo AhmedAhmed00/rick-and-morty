@@ -7,7 +7,7 @@ import { LocaleSwitcher } from "./locale-switcher";
 import { NAV_LINKS } from "./nav-links";
 import { Sheet } from "@/components/ui/sheet";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import Image from "next/image";
 import logo from "@/public/LogoA.png";
 

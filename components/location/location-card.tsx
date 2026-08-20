@@ -1,6 +1,6 @@
 import { Globe } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import { Link } from "@/i18n/navigation";
+import { Link } from "@/components/ui/link";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { Location } from "@/types";
 
